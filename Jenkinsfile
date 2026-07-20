@@ -33,7 +33,7 @@ pipeline {
                     userpassVariable: 'Password'
                     )]) {
                     echo 'login to docker'
-                    sh "echo \$DOCKER_HUB_PASSWORD | docker login -u \$USER --password-stdin"
+                    sh "echo \$DOCKER_HUB_PASSWORD | docker login -u \$Username --password-stdin"
                     sh 'docker push ${DOCKER_USER}/${IMAGE_NAME}:${IMAGE_TAG}'
                     }
                 }
