@@ -29,11 +29,11 @@ pipeline {
                 script {
                   withcredentials([usernamePasword](
                     credentialsId: 'dockerid'
-                    usernameVariable: 'DOCKER_USER'
-                    userpassVariable: 'Password'
+                    usernameVariable: 'USER'
+                    userpassVariable: 'PASS'
                     )]) {
                     echo 'login to docker'
-                    sh "echo \$DOCKER_HUB_PASSWORD | docker login -u \$DOCKER_USER --password-stdin"
+                    sh "echo \$PASS | docker login -u \$USER --password-stdin"
                     sh 'docker push ${DOCKER_USER}/${IMAGE_NAME}:${IMAGE_TAG}'
                     }
                 }
